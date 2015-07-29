@@ -14,7 +14,7 @@
 #$ -V
 
 # Email pour suivre l'execution 
-#$ -M axel.verdier@ird.fr
+#$ -M your@mail
 
 # Type de massage que l'on reçoit par mail
 #    -  (b) un message au demarrage
