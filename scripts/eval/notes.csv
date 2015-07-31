@@ -1,0 +1,16 @@
+Perl scripts;Description
+gap_stats.pl;Collect stats about introns and other gap operation usage
+get_mm_binned.pl;Calculate the distribution of number of mismatches per alignment stratified by read mean quality
+get_gap_mm_pos.pl;Determine positional distribution of indels , introns and mismatches
+
+R plots scripts;Description;Related figure;Related perl script;input
+plot_intron_know_vs_novel.R;plot ROC-like  curves for annotated  vs. novel junctions;Figure 5;;gap_stats.pl;
+plot_gap_mm_pos.R;Plot positional distribution of gaps and mismatches in read sequences;;get_gap_mm_pos.pl;
+
+plot_sim_indel_accuracy;Plot heatmap of indel accuracy for simulated data;Figure 4;;
+
+
+Figures :
+Figure;Script R;Script perl
+Figure 1;make_pair_ali_yield_table.R;validate_bam.pl
+
