@@ -144,15 +144,9 @@ while (my $line = <BAM>) {
     }
   }
 
-  my $md=0;
-  if($line =~ m/MD:Z:(\S+)/g){($md) = $line =~m/MD:Z:(\S+)/g;}
-  if($md != 0){
+  my($md) = $line =~m/MD:Z:(\S+)/g;
   	$md =~ s/\^\D+/:/g;
   	$numN_ref = $md =~ tr/N//;
-  }
-  else{
-	$numN_ref=0;
-  }
 
   $pos = 0;
   if ($numN_ref > 0) {
@@ -173,8 +167,9 @@ while (my $line = <BAM>) {
       $numN++;
     }
   }
-  my $nm=0;
-  if($line =~ m/NM:i:(\d+)/g){($nm)=$line =~ m/NM:i:(\d+)/g;}
+ 	
+  my ($nm)=$line =~ m/NM:i:(\d+)/g;
+
   $nm = $nm - $indels - $numN - $numN_ref;
   if ($nm < 0) {
   	print STDERR "Problem \$nm<0:";
@@ -193,7 +188,7 @@ while (my $line = <BAM>) {
 # Report number of mismatches for each mean read quality
 print "\nNumber of mismatches for each mean read quality:\n";
 for (my $i = 0; $i <= 40; $i++) {
-  foreach my $key (sort keys %{$mm_count[$i]}) {
+  foreach my $key (sort {$a<=>$b} keys %{$mm_count[$i]}) {
     print "$i\t$key\t$mm_count[$i]{$key}\n";
   }
 }
